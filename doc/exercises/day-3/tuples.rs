@@ -10,9 +10,9 @@ struct Matrix(f32, f32, f32, f32);
 
 fn main() {
     // A tuple with a bunch of different types
-    let long_tuple = (1u8, 2_u16, 3u32, 4u64,
-                      -1i8, -2_i16, -3i32, -4i64,
-                      0.1f32, 0.2f64,
+    let long_tuple = (1_u8, 2_u16, 3_u32, 4_u64,
+                      -1_i8, -2_i16, -3_i32, -4_i64,
+                      0.1_f32, 0.2_f64,
                       'a', true);
 
     // Values can be extracted from the tuple using tuple indexing

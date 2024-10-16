@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-rustc ./formatting.rs -o ./formatting.out
+rustc ./structs.rs -o ./structs.out
 sleep 1
 # clear
-./formatting.out
+./structs.out
