@@ -12,7 +12,7 @@ fn main() {
     println!("Hello {}", "Joe");
     println!("{0}, meet {1}. {1}, meet {0}.", "Joe", "Jane");
     println!("I paid ${amount_dollars}.{amount_cents} for this", amount_dollars=30, amount_cents=20);
-    println!("Infact, I paid ${amount_dollars:0<5}.{amount_cents} for this", amount_dollars=30, amount_cents=20);
+    println!("Infact, I paid ${0:0<5}.{amount_cents} for this", 30, amount_cents=20);
     println!("Base 10:               {}",   69420); //69420
     println!("Base 2 (binary):       {:b}", 69420); //10000111100101100
     println!("Base 8 (octal):        {:o}", 69420); //207454
