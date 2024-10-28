@@ -6,19 +6,19 @@ use std::mem;
 fn call_with_20<F> (func: F) -> () where
     F: Fn(i32) -> () {
 
-    func(20);
+    func(20)
 }
 
 fn return_with_num<F> (func: F, num: i32) -> i32 where
     F: Fn(i32) -> i32 {
 
-    func(num);
+    func(num)
 }
 
 fn use_with_drop<T>(func: T) -> () where
     T: FnOnce()-> () {
 
-    func();
+    func()
 }
 
 fn main () -> () {
@@ -43,7 +43,9 @@ fn main () -> () {
 
     use_with_drop(mover_fn);
 
-    println!("maybe let's forget about accessing {}", movable_string);
+    mem::drop(mover_fn);
+
+    println!("forget about accessing {}", movable_string);
     println!("but you can still reach a copy of {} if you want", copied_string);
 
     return ();
