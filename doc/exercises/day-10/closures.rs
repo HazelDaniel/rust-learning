@@ -34,7 +34,7 @@ fn main () -> () {
     println!("the mysterious number is {}", x);
     println!("the doubled number is {}", y);
 
-    let movable_string = "property";
+    let movable_string = String::from("property");
     let copied_string = movable_string.to_owned();
 
     let mover_fn = move || {
@@ -43,9 +43,10 @@ fn main () -> () {
 
     use_with_drop(mover_fn);
 
-    mem::drop(mover_fn);
+    // mem::drop(mover_fn); // 'mover_fn' has already been moved in the previous call so, you can't
+    // access it anymore
 
-    println!("forget about accessing {}", movable_string);
+    // println!("forget about accessing {}", movable_string);
     println!("but you can still reach a copy of {} if you want", copied_string);
 
     return ();
