@@ -37,7 +37,7 @@ fn main() {
     let reference = &4;
 
     match reference {
-        &ref val => println!("Got a value via destructuring: {:?}", val),
+        &ref val => println!("Got a value via destructuring: {:?}", *val),
     }
 
     match *reference {
@@ -64,7 +64,7 @@ fn main() {
 
     match _is_a_reference {
         &mut ref mut r => {
-            println!("74: _is_a_reference is a reference to a value: {:?}", r);
+            println!("74: _is_a_reference is a reference to a value: {:?}", *r);
             *_is_a_reference = 3;
         },
     }
@@ -106,4 +106,3 @@ fn main() {
 
     return ();
 }
-

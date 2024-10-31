@@ -14,5 +14,9 @@ impl Pair {
         let Pair(first, second) = self;
 
     }
+
+    /*ANSWER (FROM THE FUTURE): because it passes it in by value and so the destroy function owns the instance now.
+        so whenever the function is done executing, its owned variables (self, in this case) go out of scope and are dropped
+    */
 }
 ```
