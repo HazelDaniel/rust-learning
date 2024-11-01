@@ -3,12 +3,5 @@
 version = 3
 
 [[package]]
-name = "classes"
+name = "classLib"
 version = "0.1.0"
-
-[[package]]
-name = "day-13"
-version = "0.1.1"
-dependencies = [
- "classes",
-]

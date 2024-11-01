@@ -1,0 +1,9 @@
+[dependencies]
+
+[package]
+name = "classes"
+version = "0.1.0"
+
+[lib]
+name = "class"
+path = "src/class.rs"
