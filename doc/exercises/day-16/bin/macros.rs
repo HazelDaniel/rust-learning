@@ -36,19 +36,31 @@ macro_rules! test {
 
 macro_rules! list_seq {
     ($x: expr) => {
-        println!("list sequence is: {:?}", stringify!($x))
+        println!("{:?}", stringify!($x))
     };
     ($x: expr, $($y: expr),+) => {
-        println!("the sequence is: {:?}", stringify!($x));
+        print!("{:?}, ", stringify!($x));
         list_seq!($($y),+)
     }
 }
 
 create_fn!(foo);
 
+macro_rules! calculate {
+    (eval $i: expr) => [{
+        let int_val: usize = $i;
+        println!("{} = {}", stringify!($i), int_val);
+    }];
+    (eval $i: expr, $(eval $j: expr),+) => [{
+        calculate!(eval $i);
+        calculate!($(eval $j),+);
+    }];
+}
+
 
 fn main () -> () {
     foo();
+
     print_block!({
         print_res!({
             let x = 5;
@@ -63,7 +75,13 @@ fn main () -> () {
     test!(2 == 3, <or> 4 == 4);
     test!(2 == 3, <and> 4 == 4);
 
-    list_seq!(1, 2, 3, 4, 5);
+    list_seq!(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 3_i32);
+
+    calculate![
+        eval 2 * 2 + 7,
+        eval 3,
+        eval 4
+    ];
 
     return ();
 }
