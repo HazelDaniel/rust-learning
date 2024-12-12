@@ -4,50 +4,41 @@
 use std::num::ParseIntError;
 
 pub mod exports;
-pub use exports::utils::utils::{Job, Person, PhoneNumber};
+// pub use exports::utils::utils::Chopped;
+// pub use exports::utils::utils::Cooked;
+// pub use exports::utils::utils::Peeled;
+pub use exports::utils::utils::*;
+// pub use Food::*;
 
-#[derive(Debug)]
-enum Food {
-    Apple,
-    Carrot,
-    Potato,
-}
-#[derive(Debug)]
-struct Peeled(Food);
-#[derive(Debug)]
-struct Chopped(Food);
-#[derive(Debug)]
-struct Cooked(Food);
-
-fn peel(food: Option<Food>) -> Option<Peeled> {
+pub fn peel(food: Option<Food>) -> Option<Peeled> {
     match food {
         Some(food) => Some(Peeled(food)),
         None => None,
     }
 }
 
-fn chop(peeled: Option<Peeled>) -> Option<Chopped> {
+pub fn chop(peeled: Option<Peeled>) -> Option<Chopped> {
     match peeled {
         Some(Peeled(food)) => Some(Chopped(food)),
         None => None,
     }
 }
 
-fn cook(chopped: Option<Chopped>) -> Option<Cooked> {
+pub fn cook(chopped: Option<Chopped>) -> Option<Cooked> {
     match chopped {
         Some(Chopped(food)) => Some(Cooked(food)),
         None => None,
     }
 }
 
-fn eat(food: Option<Cooked>) {
+pub fn eat(food: Option<Cooked>) {
     match food {
         Some(food) => println!("we are eating: {:?}", food),
         None => println!("the current food is not edible."),
     };
 }
 
-fn process(food: Option<Food>) -> Option<Cooked> {
+pub fn process(food: Option<Food>) -> Option<Cooked> {
     let ret_peeled_if_food = |x| Some(Peeled(x));
     food.and_then(ret_peeled_if_food)
         // food.map(|x| Peeled(x))

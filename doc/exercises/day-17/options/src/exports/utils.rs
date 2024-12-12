@@ -14,6 +14,22 @@ pub mod utils {
         pub number: u32,
     }
 
+    #[derive(Debug)]
+    pub enum Food {
+        Apple,
+        Carrot,
+        Potato,
+    }
+
+    #[derive(Debug)]
+    pub struct Peeled(pub Food);
+
+    #[derive(Debug)]
+    pub struct Chopped(pub Food);
+
+    #[derive(Debug)]
+    pub struct Cooked(pub Food);
+
     impl Person {
         pub fn work_phone_area_code(&self) -> Option<i32> {
             self.job?.phone_number?.area_code
