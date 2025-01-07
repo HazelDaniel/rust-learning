@@ -97,12 +97,18 @@ pub mod with_refcell {
             }
         }
 
+        pub fn update(&self, index: usize, value: T) -> () {
+            if let Some(node) = &self.head {
+                let mut counter = 0;
+            }
+        }
+
         pub fn print(&self) -> () {
             if let Some(node) = &self.head {
                 let mut curr_node_ref = Rc::clone(&node);
 
                 let curr_node = curr_node_ref.borrow();
-                print!("{:?}", curr_node.value);
+                print!("[<Rc + RefCell linked list>] {:?}", curr_node.value);
 
                 let mut next_node_option  = curr_node.next.clone();
                 loop {
@@ -114,11 +120,7 @@ pub mod with_refcell {
                         _ => None
                     };
 
-                    match next_node_option {
-                        None => break,
-                        _ => ()
-                    }
-
+                    if next_node_option.is_none() { break; }
                 }
             }
             println!();
